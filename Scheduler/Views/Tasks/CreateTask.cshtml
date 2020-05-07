@@ -1,0 +1,43 @@
+﻿@model Scheduler.Data.Entities.Task
+@{
+    ViewData["Title"] = "CreateTask";
+}
+
+
+<div class="container mt-3">
+    <h3>Add New Task</h3>
+    <hr />
+    <form method="post" class="border p-3">
+
+        <div class="form-group row">
+            <label asp-for="Title" class="col-2"></label>
+            <div class="col-7">
+                <input type="text" asp-for="Title" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Content" class="col-2"></label>
+            <div class="col-7">
+                <textarea type="text" asp-for="Content" class="form-control"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="CreationTime" class="col-2"></label>
+            <div class="col-7">
+                <input id="datepicker" type="text" asp-for="CreationTime" class="form-control" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2"></div>
+            <button type="submit" class="btn btn-info col-3 ml-3">Create Task</button>
+            <a asp-controller="Tasks" asp-action="Index" class="btn btn-success col-3 ml-2">Back to List</a>
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
+    </form>
+    
+</div>
+
+<partial name="_ValidationScriptsPartial" />

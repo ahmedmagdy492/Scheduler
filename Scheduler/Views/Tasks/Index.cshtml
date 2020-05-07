@@ -1,0 +1,87 @@
+﻿@model MyScheduleViewModel
+@{
+    ViewData["Title"] = "My Schedule";
+    var currentMonth = Model.CurrentDateTime.ToString("MMMM");
+    int daysOfCurrentMonth = Calender.Lib.Calender.GetMonthDayCount(currentMonth);
+    int tasksCounter = 0;
+}
+
+<div class="container mt-3" id="calender">
+
+    <div class="row">
+        <h3 class="col-5">My Schedule</h3>
+        <h3 class="col-3">
+            <span id="month">@Model.CurrentDateTime.ToString("MMMM")</span>
+            <span>@Model.CurrentDateTime.ToString("yyyy")</span>
+        </h3>
+        <a asp-controller="Tasks" asp-action="CreateTask" class="btn btn-info col-4">Add Task</a>
+    </div>
+    <hr />
+    <div class="row">
+        <button class="col-1 font-weight-bold btn btn-default" style="font-size: 20px;" onclick="getPrevMonth('@currentMonth', @Model.CurrentDateTime.Year)"><</button>
+        <div class="container row col-10">
+            @for (int i = 1; i <= daysOfCurrentMonth; i++)
+            {
+                @if (i == Model.CurrentDateTime.Day)
+                {
+                    <span class="day-box col-2 today" onclick="show(@i, '@currentMonth', @Model.Year)">
+                        @i
+                        @if (tasksCounter < Model.Tasks.Count())
+                        {
+                            @if (i == Model.Tasks[tasksCounter].CreationTime.Value.Day)
+                            {
+                                <span> - @Model.Tasks[tasksCounter].Title</span>
+                            }
+                        }
+                    </span>
+                }
+                else
+                {
+                    <span class="day-box col-2" onclick="show(@i, '@currentMonth', @Model.Year)">
+                        @i
+                        @if (tasksCounter < Model.Tasks.Count())
+                        {
+                            @if (i == Model.Tasks[tasksCounter].CreationTime.Value.Day)
+                            {
+                                <span> - @Model.Tasks[tasksCounter].Title</span>
+                            }
+                        }
+                    </span>                    
+                }
+                @if (tasksCounter < Model.Tasks.Count())
+                {
+                    if (Model.Tasks[tasksCounter].CreationTime.Value.Day <= i)
+                    {
+                        tasksCounter++;
+                    }
+                }
+            }
+        </div>
+        <button class="col-1 font-weight-bold btn btn-default" style="font-size: 20px;" onclick="getNextMonth('@currentMonth', @Model.CurrentDateTime.Year)">></button>
+    </div>
+</div>
+
+@section calScript{ 
+    <script>
+        function show(i, currentMonth, year) {
+            location.replace(`/Tasks/Details?day=${i}&month=${currentMonth}&year=${year}`);
+        }
+        const calContainer = document.querySelector('#calender');        
+        function getNextMonth(currentMonth, year) {
+            $.ajax({
+                url: "/Tasks/NextMonth?current=" + currentMonth + "&year=" + year,
+                success: function (response) {
+                    calContainer.innerHTML = response;                    
+                }
+            })
+        }
+        function getPrevMonth(currentMonth, year) {
+            $.ajax({
+                url: "/Tasks/PrevMonth?current=" + currentMonth +"&year=" + year,
+                success: function (response) {
+                    calContainer.innerHTML = response;
+                }
+            })
+        }
+    </script>
+}

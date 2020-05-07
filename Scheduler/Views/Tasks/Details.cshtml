@@ -1,0 +1,35 @@
+﻿@model Scheduler.Data.Entities.Task
+@{
+    ViewData["Title"] = Model.CreationTime + "- Task";
+}
+
+<div class="container mt-3">
+    <div class="container">
+        <h3>@Model.Title</h3>
+        <hr />
+    </div>
+    <div class="container mt-2 border p-3">
+        <h4>
+            @Model.Content
+        </h4>        
+    </div>
+    <div class="container mt-3">
+        <button class="btn btn-danger" onclick="del()">Delete</button>
+        <a asp-action="Index" asp-controller="Tasks" class="btn btn-info">Back</a>
+    </div>
+</div>
+
+@section deleteTask
+{
+    <script>
+        function del() {
+            $.ajax({
+                url: '/Tasks/Delete?id=' + @Model.Id,
+                method: 'POST',
+                success: function () {
+                    location.replace('/Tasks/Index');
+                }
+            })
+        }
+    </script>
+}

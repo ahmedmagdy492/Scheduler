@@ -1,0 +1,9 @@
+F:\Projects\Scheduler\Calender.Lib\bin\Debug\netcoreapp3.1\Calender.Lib.deps.json
+F:\Projects\Scheduler\Calender.Lib\bin\Debug\netcoreapp3.1\Calender.Lib.dll
+F:\Projects\Scheduler\Calender.Lib\bin\Debug\netcoreapp3.1\Calender.Lib.pdb
+F:\Projects\Scheduler\Calender.Lib\obj\Debug\netcoreapp3.1\Calender.Lib.csprojAssemblyReference.cache
+F:\Projects\Scheduler\Calender.Lib\obj\Debug\netcoreapp3.1\Calender.Lib.csproj.CoreCompileInputs.cache
+F:\Projects\Scheduler\Calender.Lib\obj\Debug\netcoreapp3.1\Calender.Lib.AssemblyInfoInputs.cache
+F:\Projects\Scheduler\Calender.Lib\obj\Debug\netcoreapp3.1\Calender.Lib.AssemblyInfo.cs
+F:\Projects\Scheduler\Calender.Lib\obj\Debug\netcoreapp3.1\Calender.Lib.dll
+F:\Projects\Scheduler\Calender.Lib\obj\Debug\netcoreapp3.1\Calender.Lib.pdb

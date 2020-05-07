@@ -1,0 +1,58 @@
+﻿@model MyScheduleViewModel
+@{
+    string currentMonth = Calender.Lib.Calender.GetMonthName(Model.Month);
+    int daysOfCurrentMonth = Calender.Lib.Calender.GetMonthDayCount(currentMonth);
+    string thisMonth = Calender.Lib.Calender.GetMonthName(DateTime.Now.Month);
+    int tasksCounter = 0;
+}
+<div class="row" id="calender">
+    <h3 class="col-5">My Schedule</h3>
+    <h3 class="col-3">
+        <span id="month">@currentMonth</span>
+        <span>@Model.Year</span>
+    </h3>
+    <a asp-controller="Tasks" asp-action="CreateTask" class="btn btn-info col-4">Add Task</a>
+</div>
+<hr />
+<div class="row">
+    <button onclick="getPrevMonth('@currentMonth', @Model.Year)" class="col-1 font-weight-bold btn btn-default" style="font-size: 20px;"><</button>
+    <div class="container row col-10">
+        @for (int i = 1; i <= daysOfCurrentMonth; i++)
+        {
+            @if (i == DateTime.Now.Day && currentMonth == thisMonth && Model.Year == DateTime.Now.Year)
+            {
+                <span class="day-box col-2 today" onclick="show(@i, '@currentMonth', @Model.Year)">
+                    @i
+                    @if (tasksCounter < Model.Tasks.Count())
+                    {
+                        @if (i == Model.Tasks[tasksCounter].CreationTime.Value.Day)
+                        {
+                            <span> - @Model.Tasks[tasksCounter].Title</span>
+                        }
+                    }
+                </span>
+            }
+            else
+            {
+                <span class="day-box col-2" onclick="show(@i, '@currentMonth', @Model.Year)">
+                    @i
+                    @if (tasksCounter < Model.Tasks.Count())
+                    {
+                        @if (i == Model.Tasks[tasksCounter].CreationTime.Value.Day)
+                        {
+                            <span> - @Model.Tasks[tasksCounter].Title</span>
+                        }
+                    }
+                </span>
+            }
+            @if (tasksCounter < Model.Tasks.Count())
+            {
+                if (Model.Tasks[tasksCounter].CreationTime.Value.Day <= i)
+                {
+                    tasksCounter++;
+                }
+            }
+        }
+    </div>
+    <button class="col-1 font-weight-bold btn btn-default" style="font-size: 20px;" onclick="getNextMonth('@currentMonth', @Model.Year)">></button>
+</div>
