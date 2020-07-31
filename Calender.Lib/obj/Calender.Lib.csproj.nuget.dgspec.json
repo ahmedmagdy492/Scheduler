@@ -10,11 +10,11 @@
         "projectUniqueName": "F:\\Projects\\Scheduler\\Calender.Lib\\Calender.Lib.csproj",
         "projectName": "Calender.Lib",
         "projectPath": "F:\\Projects\\Scheduler\\Calender.Lib\\Calender.Lib.csproj",
-        "packagesPath": "C:\\Users\\AhmeD-Magdy\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Ahmed Magdy\\.nuget\\packages\\",
         "outputPath": "F:\\Projects\\Scheduler\\Calender.Lib\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\AhmeD-Magdy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ahmed Magdy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -52,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

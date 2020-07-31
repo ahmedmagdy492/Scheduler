@@ -87,11 +87,22 @@ body {
     cursor: pointer;
 }
 .today{
-    background: #ffd800;
-    color: #ff0000;
+    background: #000;
+    color: #fff;
+}
+.btn-black{
+    color: #fff;
+    background: #000;
+}
+.btn-white {
+    color: #000;
+    background: #fff;
+    border: 1px solid #000;
 }
 .banner{
     background: url('../imgs/banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     color: #fff;
     height: 100vh;    
     display: grid;

@@ -11,7 +11,7 @@
         <span id="month">@currentMonth</span>
         <span>@Model.Year</span>
     </h3>
-    <a asp-controller="Tasks" asp-action="CreateTask" class="btn btn-info col-4">Add Task</a>
+    <a asp-controller="Tasks" asp-action="CreateTask" class="btn btn-black col-4">Add Task</a>
 </div>
 <hr />
 <div class="row">
@@ -29,7 +29,8 @@
                         {
                             <span> - @Model.Tasks[tasksCounter].Title</span>
                         }
-                    }
+                    } 
+                    @Utility.GetDayInString(i, Model.Month, Model.Year)
                 </span>
             }
             else
@@ -42,7 +43,8 @@
                         {
                             <span> - @Model.Tasks[tasksCounter].Title</span>
                         }
-                    }
+                    } 
+                    @Utility.GetDayInString(i, Model.Month, Model.Year)
                 </span>
             }
             @if (tasksCounter < Model.Tasks.Count())

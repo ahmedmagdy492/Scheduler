@@ -13,11 +13,13 @@ namespace Scheduler.Data.Entities
     {
         [Key]
         public int Id { get; set; }
+        [MaxLength(25)]
         [Required]
         public string Title { get; set; }
         [Required]
         public string Content { get; set; }
         [DisplayName("Task Date")]
+        [Required]
         public DateTime? CreationTime { get; set; }
 
         [ForeignKey(nameof(User))]
