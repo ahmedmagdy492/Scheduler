@@ -15,6 +15,11 @@ namespace Scheduler.Repository
             _ctx = ctx;
         }
 
+        public IEnumerable<Task> GetByName(string name)
+        {
+            return _ctx.Tasks.Where(t => t.Title.ToLower().Contains(name)).ToList();
+        }
+
         public IEnumerable<Task> GetTaskOfUser(string userId)
         {
             return _ctx.Tasks.Where(t => t.UserId == userId).ToList();

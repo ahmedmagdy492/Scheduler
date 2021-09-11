@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Search Tasks";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="search" class="form-control" id="SearchQuery" placeholder="Write Task Title ..." />
+            </div>
+            <button class="btn btn-primary" onclick="searchByName(event)">Search</button>
+        </div>
+    </div>
+
+    <div class="row mt-5" id="searchResults">
+
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/js/Tasks.js"></script>
+}

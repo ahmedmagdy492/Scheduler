@@ -8,6 +8,7 @@ namespace Scheduler.Repository
     {
         bool Commit();
         void CreateTask(Task task);
+        IEnumerable<Task> GetByName(string name);
         IEnumerable<Task> GetTaskOfDate(DateTime date);
         IEnumerable<Task> GetTaskOfUser(string userId);
         IEnumerable<Task> GetTasksOfUserWithDate(string userId);

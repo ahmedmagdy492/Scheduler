@@ -21,6 +21,18 @@ namespace Scheduler.Controllers
             _userRepository = userRepository;
         }
 
+        public IActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Search(string title)
+        {
+            var tasks = _taskRepository.GetByName(title.ToLower());
+            return PartialView("Tasks/_TasksSearchResults", tasks);
+        }
+
         public IActionResult Index()
         {
             var user = _userRepository.FindUserByName(User.Identity.Name);
@@ -99,12 +111,8 @@ namespace Scheduler.Controllers
 
         public IActionResult Details(int day, string month, int year)
         {
-            var task = _taskRepository.GetTaskOfDate(Convert.ToDateTime($"{month}/{day}/{year}")).FirstOrDefault();
-            if(task == null)
-            {
-                return NotFound();
-            }
-            return View(task);
+            var tasks = _taskRepository.GetTaskOfDate(Convert.ToDateTime($"{month}/{day}/{year}"));
+            return View(tasks);
         }
 
         [HttpPost]

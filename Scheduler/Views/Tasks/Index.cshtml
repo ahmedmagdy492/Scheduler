@@ -85,7 +85,7 @@
     <script>
         function show(i, currentMonth, year) {
             $.ajax({
-                url: `/Tasks/Details?day=${i}&month=${currentMonth}&year=${year}`,
+                url: url + `/Tasks/Details?day=${i}&month=${currentMonth}&year=${year}`,
                 method: 'GET',
                 success: function () {
                     location.replace(`/Tasks/Details?day=${i}&month=${currentMonth}&year=${year}`);
@@ -98,7 +98,7 @@
         const calContainer = document.querySelector('#calender');        
         function getNextMonth(currentMonth, year) {
             $.ajax({
-                url: "/Tasks/NextMonth?current=" + currentMonth + "&year=" + year,
+                url: url + "/Tasks/NextMonth?current=" + currentMonth + "&year=" + year,
                 success: function (response) {
                     calContainer.innerHTML = response;                    
                 }
@@ -106,7 +106,7 @@
         }
         function getPrevMonth(currentMonth, year) {
             $.ajax({
-                url: "/Tasks/PrevMonth?current=" + currentMonth +"&year=" + year,
+                url: url + "/Tasks/PrevMonth?current=" + currentMonth +"&year=" + year,
                 success: function (response) {
                     calContainer.innerHTML = response;
                 }

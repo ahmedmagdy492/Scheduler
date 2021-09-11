@@ -1,33 +1,43 @@
-﻿@model Scheduler.Data.Entities.Task
+﻿@model List<Scheduler.Data.Entities.Task>
 @{
-    ViewData["Title"] = Model.CreationTime + "- Task";
+    ViewData["Title"] = "Task";
 }
 
-<div class="container mt-3">
-    <div class="container">
-        <h3>@Model.Title</h3>
-        <hr />
-    </div>
-    <div class="container mt-2 border p-3">
-        <h4>
-            @Model.Content
-        </h4>        
-    </div>
-    <div class="container mt-3">
-        <button class="btn btn-danger" onclick="del()">Delete</button>
-        <a asp-action="Index" asp-controller="Tasks" class="btn btn-black">Back</a>
-    </div>
-</div>
+@if (Model.Count > 0)
+{
+    foreach (var item in Model)
+    {
+        <div class="container mt-5">
+            <div class="container">
+                <h3>@item.Title</h3>
+                <hr />
+            </div>
+            <div class="container mt-2 border p-3">
+                <p style="font-family: Arial !important;">
+                    @Html.Raw(item.Content)
+                </p>
+            </div>
+            <div class="container mt-3">
+                <button class="btn btn-danger" onclick="del('@item.Id')">Delete</button>
+                <a asp-action="Index" asp-controller="Tasks" class="btn btn-black">Back</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <h4 class="text-center mt-4">No Tasks Added</h4>
+}
 
 @section deleteTask
 {
     <script>
-        function del() {
+        function del(id) {
             $.ajax({
-                url: '/Tasks/Delete?id=' + @Model.Id,
+                url: url + `/Tasks/Delete?id=${id}`,
                 method: 'POST',
                 success: function () {
-                    location.replace('/Tasks/Index');
+                    location.reload();
                 }
             })
         }
